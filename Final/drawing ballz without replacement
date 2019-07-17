@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jun 14 10:07:05 2018
+
+@author: AliBaba
+"""
+
+import random
+def drawing_without_replacement_sim(numTrials):
+    '''
+    Runs numTrials trials of a Monte Carlo simulation
+    of drawing 3 balls out of a bucket containing
+    4 red and 4 green balls. Balls are not replaced once
+    drawn. Returns a float - the fraction of times 3 
+    balls of the same color were drawn in the first 3 draws.
+    '''
+    sux = 0
+    for i in range(numTrials):
+        ballz, draw = ['G', 'G', 'G', 'G', 'R', 'R', 'R', 'R'], []
+        for i in range(3):
+            x = ballz[random.randint(0, (len(ballz) - 1))]
+            draw.append(x)
+            ballz.remove(x)
+        if len(set(draw)) == 1:
+            sux += 1
+    return sux/numTrials
